@@ -97,3 +97,12 @@ class Dater
     }[day]
   end
 end
+
+def main
+  puts Dater.new.date_for(ARGV[0] || "")
+end
+
+if __FILE__ == $0
+  main
+end
+
