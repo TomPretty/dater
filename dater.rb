@@ -32,7 +32,7 @@ class Dater
       else
         today
       end
-    date.strftime("%Y-%m-%d")
+    date.strftime(format_string)
   end
 
   private
@@ -109,6 +109,10 @@ class Dater
       saturday: 6,
       sunday: 7,
     }[day]
+  end
+
+  def format_string
+    ENV["DATER_DATE_FORMAT"] || "%Y-%m-%d"
   end
 end
 

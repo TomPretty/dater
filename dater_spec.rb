@@ -16,6 +16,18 @@ RSpec.describe Dater do
     end
   end
 
+  context "with a different format string" do
+    it "prints out the date in the new format" do
+      ENV["DATER_DATE_FORMAT"] = "%d-%m-%Y"
+
+      date = dater.date_for
+
+      expect(date).to eq("06-05-2020")
+
+      ENV["DATER_DATE_FORMAT"] = nil
+    end
+  end
+
   context "yesterday" do
     %w(yday yesterday).each do |pattern|
       it "prints out yesterday's date given #{pattern}" do
