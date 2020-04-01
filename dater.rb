@@ -38,7 +38,7 @@ class Dater
   private
 
   def today
-    Time.now.to_date
+    @today ||= Date.today
   end
 
   def yesterday
