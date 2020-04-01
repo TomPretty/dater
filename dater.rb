@@ -23,8 +23,12 @@ class Dater
         saturday
       elsif pattern =~ /^(?:sunday|sun|su)$/
         sunday
-      elsif pattern =~ /^[\d]{4}-[\d]{2}-[\d]{2}$/
-        date(pattern)
+      elsif pattern =~ /^\d{1,2}$/
+        day(pattern)
+      elsif pattern =~ /^\d{1,2}-\d{1,2}$/
+        month_and_day(pattern)
+      elsif pattern =~ /^(?:\d{2}|\d{4})-\d{1,2}-\d{1,2}$/
+        year_and_month_and_day(pattern)
       else
         today
       end
@@ -73,7 +77,17 @@ class Dater
     today - days_since(:sunday)
   end
 
-  def date(pattern)
+  def day(pattern)
+    day = pattern.to_i
+    Date.new(today.year, today.month, day)
+  end
+
+  def month_and_day(pattern)
+    month, day = pattern.split("-").map(&:to_i)
+    Date.new(today.year, month, day)
+  end
+
+  def year_and_month_and_day(pattern)
     Date.parse(pattern)
   end
 

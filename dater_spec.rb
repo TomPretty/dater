@@ -114,9 +114,43 @@ RSpec.describe Dater do
     end
   end
 
-  context "a date" do
-    it "prints out the given date" do
+  context "a day" do
+    it "prints date for this year and month" do
+      date = dater.date_for("01")
+
+      expect(date).to eq("2020-05-01")
+    end
+
+    it "prints date for this year and month given shorthand" do
+      date = dater.date_for("1")
+
+      expect(date).to eq("2020-05-01")
+    end
+  end
+
+  context "a month and day" do
+    it "prints out date for this year" do
+      date = dater.date_for("01-01")
+
+      expect(date).to eq("2020-01-01")
+    end
+
+    it "prints out date for this year given shorthand" do
+      date = dater.date_for("1-1")
+
+      expect(date).to eq("2020-01-01")
+    end
+  end
+
+  context "a year a month and a day" do
+    it "prints out the date" do
       date = dater.date_for("2020-01-01")
+
+      expect(date).to eq("2020-01-01")
+    end
+
+    it "prints the date given a shorthand" do
+      date = dater.date_for("20-1-1")
 
       expect(date).to eq("2020-01-01")
     end
