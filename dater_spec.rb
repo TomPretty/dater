@@ -58,12 +58,32 @@ RSpec.describe Dater do
     end
   end
 
+  context "last-monday" do
+    %w(last-m last-mon last-monday l-m l-mon l-monday).each do |pattern|
+      it "prints out date for Monday of last week given #{pattern}" do
+        date = dater.date_for(pattern)
+
+        expect(date).to eq("2020-04-27")
+      end
+    end
+  end
+
   context "tuesday" do
     %w(t tue tuesday).each do |pattern|
       it "prints out date for Tuesday of this week given #{pattern}" do
         date = dater.date_for(pattern)
 
         expect(date).to eq("2020-05-05")
+      end
+    end
+  end
+
+  context "last-tuesday" do
+    %w(last-t last-tue last-tuesday l-t l-tue l-tuesday).each do |pattern|
+      it "prints out date for Tuesday of last week given #{pattern}" do
+        date = dater.date_for(pattern)
+
+        expect(date).to eq("2020-04-28")
       end
     end
   end
@@ -86,12 +106,32 @@ RSpec.describe Dater do
     end
   end
 
+  context "last-wednesday" do
+    %w(last-w last-wed last-wednesday l-w l-wed l-wednesday).each do |pattern|
+      it "prints out date for Wednesday of last week given #{pattern}" do
+        date = dater.date_for(pattern)
+
+        expect(date).to eq("2020-04-29")
+      end
+    end
+  end
+
   context "thursday" do
     %w(th thu thursday).each do |pattern|
       it "prints out date for Thursday of this week given #{pattern}" do
         date = dater.date_for(pattern)
 
         expect(date).to eq("2020-05-07")
+      end
+    end
+  end
+
+  context "last-thursday" do
+    %w(last-th last-thu last-thursday l-th l-thu l-thursday).each do |pattern|
+      it "prints out date for Thursday of last week given #{pattern}" do
+        date = dater.date_for(pattern)
+
+        expect(date).to eq("2020-04-30")
       end
     end
   end
@@ -106,6 +146,16 @@ RSpec.describe Dater do
     end
   end
 
+  context "last-friday" do
+    %w(last-f last-fri last-friday l-f l-fri l-friday).each do |pattern|
+      it "prints out date for Friday of last week given #{pattern}" do
+        date = dater.date_for(pattern)
+
+        expect(date).to eq("2020-05-01")
+      end
+    end
+  end
+
   context "saturday" do
     %w(s sat saturday).each do |pattern|
       it "prints out date for Saturday of this week given #{pattern}" do
@@ -116,12 +166,32 @@ RSpec.describe Dater do
     end
   end
 
+  context "last-saturday" do
+    %w(last-s last-sat last-saturday l-s l-sat l-saturday).each do |pattern|
+      it "prints out date for Saturday of last week given #{pattern}" do
+        date = dater.date_for(pattern)
+
+        expect(date).to eq("2020-05-02")
+      end
+    end
+  end
+
   context "sunday" do
     %w(su sun sunday).each do |pattern|
       it "prints out date for Sunday of this week given #{pattern}" do
         date = dater.date_for(pattern)
 
         expect(date).to eq("2020-05-10")
+      end
+    end
+  end
+
+  context "last-sunday" do
+    %w(last-su last-sun last-sunday l-su l-sun l-sunday).each do |pattern|
+      it "prints out date for Sunday of last week given #{pattern}" do
+        date = dater.date_for(pattern)
+
+        expect(date).to eq("2020-05-03")
       end
     end
   end

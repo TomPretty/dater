@@ -19,10 +19,24 @@ class Dater
         thursday
       elsif pattern =~ /^(?:friday|fri|f)$/
         friday
-      elsif pattern =~ /^(saturday|sat|s)$/
+      elsif pattern =~ /^(?:saturday|sat|s)$/
         saturday
       elsif pattern =~ /^(?:sunday|sun|su)$/
         sunday
+      elsif pattern =~ /^(?:last|l)-(?:monday|mon|m)$/
+        last_monday
+      elsif pattern =~ /^(?:last|l)-(?:tuesday|tue|t)$/
+        last_tuesday
+      elsif pattern =~ /^(?:last|l)-(?:wednesday|wed|w)$/
+        last_wednesday
+      elsif pattern =~ /^(?:last|l)-(?:thursday|thu|th)$/
+        last_thursday
+      elsif pattern =~ /^(?:last|l)-(?:friday|fri|f)$/
+        last_friday
+      elsif pattern =~ /^(?:last|l)-(?:saturday|sat|s)$/
+        last_saturday
+      elsif pattern =~ /^(?:last|l)-(?:sunday|sun|su)$/
+        last_sunday
       elsif pattern =~ /^\d{1,2}$/
         day(pattern)
       elsif pattern =~ /^\d{1,2}-\d{1,2}$/
@@ -77,6 +91,34 @@ class Dater
     today - days_since(:sunday)
   end
 
+  def last_monday
+    today - days_since(:last_monday)
+  end
+
+  def last_tuesday
+    today - days_since(:last_tuesday)
+  end
+
+  def last_wednesday
+    today - days_since(:last_wednesday)
+  end
+
+  def last_thursday
+    today - days_since(:last_thursday)
+  end
+
+  def last_friday
+    today - days_since(:last_friday)
+  end
+
+  def last_saturday
+    today - days_since(:last_saturday)
+  end
+
+  def last_sunday
+    today - days_since(:last_sunday)
+  end
+
   def day(pattern)
     day = pattern.to_i
     Date.new(today.year, today.month, day)
@@ -101,6 +143,13 @@ class Dater
 
   def day_of_week_for(day)
     {
+      last_monday: -6,
+      last_tuesday: -5,
+      last_wednesday: -4,
+      last_thursday: -3,
+      last_friday: -2,
+      last_saturday: -1,
+      last_sunday: 0,
       monday: 1,
       tuesday: 2,
       wednesday: 3,
